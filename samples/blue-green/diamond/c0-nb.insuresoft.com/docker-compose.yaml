@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  537.004.100-0:
+    container_name: 537.004.100-0
+    image: 537.004.100-0
+    build:
+      context: ./537.004.100-0
+      dockerfile: 537.004.100-0.dockerfile
+    ports:
+     - 8080:80
+    
+
+  537.006.100-0:
+    container_name: 537.006.100-0
+    image: 537.006.100-0
+    build:
+      context: ./537.006.100-0
+      dockerfile: 537.006.100-0.dockerfile
+    ports:
+     - 8081:80

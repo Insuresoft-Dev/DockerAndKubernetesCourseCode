@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-537-006-100-0
+  namespace: 537-006-100-0
+  labels:
+    app: nginx
+    role: 537-006-100-0
+    env: test
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+    role: 537-006-100-0
+  ports:
+    - port: 80
+      targetPort: 80

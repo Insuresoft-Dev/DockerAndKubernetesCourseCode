@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-537-006-100-0
+  namespace: production
+spec:
+  type: ExternalName
+  externalName: nginx-537-006-100-0.537-006-100-0.svc.cluster.local
+  ports:
+  - port: 80
