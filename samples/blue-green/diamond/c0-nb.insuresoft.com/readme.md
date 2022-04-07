@@ -1,7 +1,6 @@
 ## Instructions
 ### Prerequisites
-
-    ** Setup resource group with Azure Container Registry and Azure Kubernetes Services **
+   ## Setup resource group with Azure Container Registry and Azure Kubernetes Services
     
     az login --service-principal --username ?? --password ?? --tenant ??
     
@@ -13,11 +12,11 @@
     
     az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 2 --enable-addons monitoring --generate-ssh-keys --attach-acr mytenataksacr  
 
-    ** Allow kubectl commands in Azure Cloud Shell **
+   ## Allow kubectl commands in Azure Cloud Shell
     
     az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
-    ** Build and Push application images to Azure in Visual Studio Code **
+   ## Build and Push application images to Azure in Visual Studio Code
     
     az acr login --name mytenataksacr.azurecr.io
     
@@ -25,7 +24,7 @@
     
     Right click 537.006.100-0/latest image and select push and and select the Azure - Lab/mytenantaksacr and  hit enter
 
-    ** Install kubernetes default ingress-nginx controller for using the ingress below **
+   ## Install kubernetes default ingress-nginx controller for using the ingress below
     
     https://kubernetes.github.io/ingress-nginx/deploy/
     
@@ -33,7 +32,7 @@
     
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/cloud/deploy.yaml
 
-    ** Before pulling the docker image from the Azure Container Registry must register a secret **
+   ## Before pulling the docker image from the Azure Container Registry must register a secret
     
     kubectl create secret docker-registry mytenataksacr-registry-connection --docker-server=mytenataksacr.azurecr.io --docker-username=?? --docker-password=??
 
@@ -94,7 +93,7 @@
 
 ### Blue-Green Deployment
 
-### Blue
+## Blue
 4. Set production to point to 537-004-100-0
     
     `kubectl apply -f production.537-004-100-0.ingress.yaml`
@@ -109,7 +108,7 @@
     
     http://diamond.insuresoft.com/537-006-100-0
 
-### Green
+## Green
 5. Set production to point to 537-006-100-0
     
     `kubectl apply -f production.537-006-100-0.ingress.yaml`
