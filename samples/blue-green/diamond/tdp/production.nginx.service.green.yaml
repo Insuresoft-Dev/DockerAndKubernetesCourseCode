@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-green
+  namespace: production
+spec:
+  type: ExternalName
+  externalName: nginx-green.green.svc.cluster.local
+  ports:
+  - port: 80

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: diamondweb-537-004-100-0-test
+  namespace: 537-004-100-0
+  labels:
+    app: diamondweb
+    role: 537-004-100-0
+spec:
+  type: LoadBalancer
+  selector:
+    app: diamondweb
+    role: 537-004-100-0
+  ports:
+    - port: 9000
+      targetPort: 80

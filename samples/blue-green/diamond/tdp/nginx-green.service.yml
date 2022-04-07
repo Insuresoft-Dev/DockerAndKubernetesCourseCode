@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-green
+  namespace: green
+  labels:
+    app: nginx
+    role: green
+    env: test
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+    role: green
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diamondweb-deployment-$TARGET_ROLE
+  namespace: $TARGET_ROLE
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: diamondweb
+      role: $TARGET_ROLE
+  template:
+    metadata:
+      labels:
+        app: diamondweb
+        role: $TARGET_ROLE
+    spec:
+      containers:
+      - name: diamondweb-$TARGET_ROLE
+        image: k8s.gcr.io/e2e-test-images/echoserver:2.3
+        ports:
+        - containerPort: 80
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 80
+        # resources:
+        #   limits:
+        #     memory: "128Mi" #128 MB
+        #     cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)

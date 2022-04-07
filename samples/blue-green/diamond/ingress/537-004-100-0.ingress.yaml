@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: diamondweb
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: 537-004-100-0.insuresoft.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: diamondweb
+              port:
+                number: 80    
+  - host: diamond.insuresoft.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: diamondweb
+              port:
+                number: 80    

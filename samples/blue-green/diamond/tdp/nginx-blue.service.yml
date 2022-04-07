@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-blue
+  namespace: blue
+  labels:
+    app: nginx
+    role: blue
+    env: test
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+    role: blue
+  ports:
+    - port: 80
+      targetPort: 80
