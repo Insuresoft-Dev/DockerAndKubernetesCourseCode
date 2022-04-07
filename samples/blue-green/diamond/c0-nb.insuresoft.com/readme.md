@@ -3,25 +3,21 @@
    1. Setup resource group with Azure Container Registry and Azure Kubernetes Services
     
     `az login --service-principal --username ?? --password ?? --tenant ??`
-    
     `az group create --name myResourceGroup --location southcentralus`
-    
     `az acr create --resource-group myResourceGroup --name mytenataksacr  --sku Basic`
-    
     `az role assignment create --assignee ?? --role contributor --resource-group myResourceGroup`
-    
     `az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 2 --enable-addons monitoring --generate-ssh-keys --attach-acr mytenataksacr`
 
    2. Allow kubectl commands in Azure Cloud Shell
     
-    `az aks get-credentials --resource-group myResourceGroup --name myAKSCluster`
+    az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
    3. Build and Push application images to Azure in Visual Studio Code
     
-    `az acr login --name mytenataksacr.azurecr.io`
+    az acr login --name mytenataksacr.azurecr.io
     
-    Right click 537.004.100-0/latest image and select push and and select the Azure - Lab/mytenantaksacr and  hit enter
-    
+    Right click 537.004.100-0/latest image and select push and and select the Azure - Lab/mytenantaksacr and  hit enter  
+
     Right click 537.006.100-0/latest image and select push and and select the Azure - Lab/mytenantaksacr and  hit enter
 
    4. Install kubernetes default ingress-nginx controller for using the ingress below
@@ -34,7 +30,7 @@
 
    5. Before pulling the docker image from the Azure Container Registry must register a secret
     
-    `kubectl create secret docker-registry mytenataksacr-registry-connection --docker-server=mytenataksacr.azurecr.io --docker-username=?? --docker-password=??`
+    kubectl create secret docker-registry mytenataksacr-registry-connection --docker-server=mytenataksacr.azurecr.io --docker-username=?? --docker-password=??
 
 ### 537.004.100-0 Deployment
 1. Deploy 537-004-100-0 namespace 
